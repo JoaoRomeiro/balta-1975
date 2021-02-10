@@ -30,5 +30,15 @@ namespace PaymentContext.Domain.Commands
         public string State { get; set; }
         public string Country { get; set; }
         public string ZipCode { get; set; }
+
+        public void Validate()
+        {
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(this.FirstName, 3, "Name.Firstname", "Nome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(this.FirstName, 60, "Name.Firstname", "Nome deve conter até 60 caracteres")
+                .HasMinLen(this.LastName, 3, "Name.LastName", "Sobrenome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(this.LastName, 60, "Name.LastName", "Nome deve conter até 60 caracteres")););
+        }
     }
 }
