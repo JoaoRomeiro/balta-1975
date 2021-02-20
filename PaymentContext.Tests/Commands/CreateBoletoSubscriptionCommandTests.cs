@@ -7,10 +7,10 @@ namespace PaymentContext.Tests
     {
         // Red, Green, Refactor
         [TestMethod]
-        public void SouldReturnErrorWhenNameIsInvalid(string cnpj)
+        public void SouldReturnErrorWhenNameIsInvalid()
         {
             var command = new CreateBoletoSubscriptionCommand();
-            command.FirstName = "";
+            command.FirstName = "Joao";
 
             command.Validate();
             Assert.AreEqual(false, command.Valid);
